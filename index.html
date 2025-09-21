@@ -549,6 +549,13 @@
       color: rgba(255, 255, 255, 0.7);
     }
 
+    .current-info .track-position {
+      font-size: 12px;
+      color: rgba(255, 154, 235, 0.8);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
     .player-controls {
       display: flex;
       align-items: center;
@@ -971,6 +978,7 @@
             <div class="current-info">
               <h3>{{ currentSong.title || '未选择歌曲' }}</h3>
               <p>{{ currentSong.artist || '请搜索并选择要播放的歌曲' }}</p>
+              <p v-if="currentInd !== -1" class="track-position">第 {{ currentInd + 1 }} 首 / 共 {{ playList.length }} 首</p>
             </div>
           </div>
 
@@ -1034,6 +1042,7 @@
             @ended="nextSong"
             @play="isPlaying = true"
             @pause="isPlaying = false"
+            @error="handlePlayError"
           ></audio>
         </div>
         
@@ -1709,6 +1718,14 @@
           this.dragState.isDragging = false;
           
           this.showNotification('播放列表顺序已更新', 'success');
+        },
+        handlePlayError() {
+          console.error('播放错误，自动跳转到下一首');
+          this.showNotification('播放失败，自动跳转到下一首', 'warning');
+          // 延迟1秒后跳转，避免快速跳转导致的问题
+          setTimeout(() => {
+            this.nextSong();
+          }, 1000);
         }
       },
       mounted() {
