@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GXNAS - 在线音乐播放器</title>
+  <title>rollegc - 在线音乐播放器</title>
+  <link rel="icon" type="image/x-icon" href="https://lsky.1123588.xyz/i/2025/09/28/68d94c4b5ee31.png">
   <link href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1057,7 +1058,7 @@
     <nav class="navbar">
       <div class="nav-container">
         <div class="logo">
-          <div><i class="fas fa-music"></i><span>GXNAS - 在线音乐播放器</span></div>
+          <div><i class="fas fa-music"></i><span>rollegc - 在线音乐播放器</span></div>
           <div class="m"><i class="fas fa-step-backward" @click="previousSong"></i><i :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'" @click="togglePlay"></i><i class="fas fa-step-forward" @click="nextSong"></i></div>
         </div>
         <div class="search-container">
@@ -1283,9 +1284,7 @@
   <script>
     window.API_BASE = 'https://music-api.gdstudio.xyz/api.php';
     window.albumSbgImg = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" fill="none" viewBox="0 0 220 220"><rect width="220" height="220" fill="rgba(255,255,255,0.1)" rx="20"/><path fill="rgba(255,255,255,0.3)" d="m110 70 30 40h-20v40H90v-40H70z"/></svg>')}`;
-    window.searchOptions = [ { "k": "网易云音乐", "v": "netease"}, { "k": "QQ音乐", "v": "tencent"}, { "k": "酷我音乐", "v": "kuwo"}, { "k": "JOOX", "v": "joox"}, 
-      { "k": "酷狗音乐", "v": "kugou"}, { "k": "咪咕音乐", "v": "migu"}, { "k": "Deezer", "v": "deezer"}, { "k": "Spotify", "v": "spotify"}, { "k": "Apple Music", "v": "apple"}, 
-      { "k": "YouTube Music", "v": "ytmusic"}, { "k": "TIDAL", "v": "tidal"}, { "k": "Qobuz", "v": "qobuz"}, { "k": "喜马拉雅", "v": "ximalaya"} ]
+    window.searchOptions = [ { "k": "网易云音乐", "v": "netease"} ]
     /****************************************** 音乐相关接口, 单独提出, 方便扩展其他源 *******************************************/
     window.getMusicList = async function(keyword, source) {
       try {
@@ -2028,7 +2027,7 @@
         document.addEventListener('keydown', this.handleKeyDown);
         // 显示欢迎信息
         setTimeout(() => {
-          this.showNotification('欢迎使用GXNAS - 在线音乐播放器', 'success');
+          this.showNotification('欢迎使用rollegc - 在线音乐播放器', 'success');
         }, 1000);
       },
       beforeUnmount() {
